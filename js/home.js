@@ -55,8 +55,13 @@ const goto = (e) => {
     } else {
         movie = '';
     }
+
+    let loc = location.href;
+    loc = loc.split("/");
+    loc.pop();
+    loc = "/".join(loc);
     
-    location.replace('http://127.0.0.1:5500/html/detail.html');
+    location.replace(loc + 'detail.html');
     e.preventDefault();
 }
 
