@@ -143,6 +143,171 @@ nav {
     transition-duration: 1s;
 }
 
+main {
+    position: relative;
+    min-height: calc(100vh - 250px);
+    overflow-x: hidden;
+    display: block;
+    top: 72px;
+    padding: 0 calc(3.5vw + 5px);
+}
+
+main::after {
+    background: url("../assets/images/home-background.png") center center / cover no-repeat fixed;
+    content: "";
+    position: absolute;
+    inset: 0px;
+    opacity: 1;
+    z-index: -1;
+}
+
+.carousel {
+    background: transparent;
+    height: 100%;
+    margin: 0 -4.6875vw;
+}
+
+.carousel button {
+    opacity: 0;
+    height: 25px;
+    width: 25px;
+    z-index: 1;
+}
+
+.carousel button:hover {
+    opacity: 1;
+    transition: opacity 0.2s ease 0s;
+}
+
+.carousel ol li {
+    background: rgb(150, 158, 171) !important;
+}
+
+.carousel ol .is-selected {
+    background: white !important;
+}
+
+.carousel-cell {
+    width: 90%;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+    counter-increment: gallery-cell;
+}
+
+.carousel-cell a {
+    border-radius: 4px;
+    box-shadow: rgb(0 0 0 / 69%) 0px 26px 30px -10px, rgb(0 0 0 / 73%) 0px 16px 10px -10px;
+    cursor: pointer;
+    display: block;
+    position: relative;
+    padding: 4px;
+}
+
+.carousel-cell a img {
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-cell a:hover {
+    padding: 0;
+    border: 4px solid rgba(249, 249, 249, 0.8);
+    transition-duration: 300ms;
+}
+
+.viewers {
+    margin-top: 30px;
+    padding: 30px 0px 26px;
+    display: grid;
+    grid-gap: 25px;
+    gap: 25px;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.viewerWrap {
+    padding-top: 56.25%;
+    border-radius: 10px;
+    box-shadow: rgb(0 0 0 / 69%) 0px 26px 30px -10px, rgb(0 0 0 / 73%) 0px 16px 10px -10px;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
+    border: 3px solid rgba(249, 249, 249, 0.1);
+}
+
+.viewerWrap img {
+    inset: 0px;
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    opacity: 1;
+    position: absolute;
+    transition: opacity 500ms ease-in-out 0s;
+    width: 100%;
+    z-index: 1;
+    top: 0;
+}
+
+.viewerWrap video {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    opacity: 0;
+    z-index: 0;
+}
+
+.viewerWrap:hover {
+    box-shadow: rgb(0 0 0 / 69%) 0px 26px 30px -10px, rgb(0 0 0 / 73%) 0px 16px 10px -10px;
+    transform: scale(1.05);
+    border-color: rgba(249, 249, 249, 0.8);
+}
+
+.viewerWrap:hover video{
+    opacity: 1;
+}
+
+.recommends {
+    padding: 0 0 26px;
+}
+
+.recommendedContent {
+    display: grid;
+    grid-gap: 25px;
+    gap: 25px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.recWrap {
+    padding-top: 56.25%;
+    border-radius: 10px;
+    box-shadow: rgb(0 0 0 / 69%) 0px 26px 30px -10px, rgb(0 0 0 / 73%) 0px 16px 10px -10px;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
+    border: 3px solid rgba(249, 249, 249, 0.1);
+}
+
+.recWrap img {
+    inset: 0px;
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    opacity: 1;
+    position: absolute;
+    transition: opacity 500ms ease-in-out 0s;
+    width: 100%;
+    z-index: 1;
+    top: 0;
+}
+
+.recWrap:hover {
+    box-shadow: rgb(0 0 0 / 69%) 0px 26px 30px -10px, rgb(0 0 0 / 73%) 0px 16px 10px -10px;
+    transform: scale(1.05);
+    border-color: rgba(249, 249, 249, 0.8);
+}
+
 @media only screen and (min-width: 768px) {
     body {
         font-size: 16px;
@@ -153,10 +318,26 @@ nav {
     body {
         font-size: 15px;
     }
+
+    .viewers {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+
+    .recommendedContent {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
 
 @media only screen and (max-width: 479px) {
     body {
         font-size: 14px;
+    }
+
+    .viewers {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+
+    .recommendedContent {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
